@@ -61,9 +61,11 @@ interface ChatListProps {
   onSearchClose: () => void;
 }
 
-export function ChatList({ sidebarOpen, searchBarOpen, onSearchOpen, onSearchClose }: ChatListProps) {
+export function ChatList({ sidebarOpen, searchBarOpen, onSearchClose }: ChatListProps) {
   const { chat, filters } = useChat();
   const { searchState, setQuery, goNext, goPrev, closeSearch, currentMatchIndex } = useSearch();
+  // Use closeSearch from hook (onSearchClose prop is the same)
+  const handleClose = () => { closeSearch(); onSearchClose(); };
 
   const parentRef = useRef<HTMLDivElement>(null);
 
