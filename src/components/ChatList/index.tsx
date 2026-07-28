@@ -135,7 +135,7 @@ export function ChatList({ sidebarOpen, searchBarOpen, onSearchClose }: ChatList
             onSearch={(q) => setQuery(q, messages)}
             onNext={goNext}
             onPrev={goPrev}
-            onClose={onSearchClose}
+            onClose={handleClose}
           />
         )}
 
