@@ -19,7 +19,7 @@ export function EmptyState({ onUploadClick }: EmptyStateProps) {
           <div style={styles.bubbleRight}>
             <span>Hello there! 😊</span>
           </div>
-          <div style={styles.bubbleLeft} style2={undefined}>
+          <div style={styles.bubbleLeft}>
             <span>Upload your chat to read it →</span>
           </div>
         </div>
