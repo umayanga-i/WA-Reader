@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="WA Reader — View your WhatsApp exported chats privately in your browser. No uploads, no servers, everything processed locally." />
+    <title>WA Reader — Private WhatsApp Chat Viewer</title>
+    <script>
+      // Set theme before React mounts to prevent flash-of-wrong-theme
+      (function () {
+        const stored = localStorage.getItem('wa-reader-theme');
+        const theme = stored || 'dark';
+        document.documentElement.setAttribute('data-theme', theme);
+        if (theme === 'dark' || theme === 'amoled') {
+          document.documentElement.classList.add('dark');
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
