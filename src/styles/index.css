@@ -1,0 +1,286 @@
+@import "tailwindcss";
+
+/* ─── Google Fonts ─────────────────────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* ─── CSS Custom Properties / Design Tokens ────────────────────────────────── */
+
+:root {
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+
+  /* Light theme */
+  --bg-primary: #f0f2f5;
+  --bg-secondary: #ffffff;
+  --bg-tertiary: #e9edef;
+  --bg-sidebar: #ffffff;
+  --bg-header: #ffffff;
+  --bg-chat: #efeae2;
+  --bg-bubble-mine: #d9fdd3;
+  --bg-bubble-other: #ffffff;
+  --bg-input: #ffffff;
+  --bg-search: #f0f2f5;
+  --bg-date-divider: rgba(255,255,255,0.9);
+  --bg-media-card: #f8f9fa;
+  --bg-system: rgba(255,255,255,0.8);
+  --bg-overlay: rgba(0,0,0,0.4);
+
+  --text-primary: #111b21;
+  --text-secondary: #54656f;
+  --text-muted: #8696a0;
+  --text-bubble-mine: #111b21;
+  --text-bubble-other: #111b21;
+  --text-system: #667781;
+  --text-link: #027eb5;
+  --text-accent: #00a884;
+  --text-danger: #ea0038;
+
+  --border-subtle: #e9edef;
+  --border-medium: #d1d7db;
+  --border-accent: #00a884;
+
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.08);
+  --shadow-md: 0 2px 8px rgba(0,0,0,0.12);
+  --shadow-lg: 0 4px 20px rgba(0,0,0,0.15);
+  --shadow-bubble: 0 1px 1px rgba(0,0,0,0.08);
+
+  --accent: #00a884;
+  --accent-hover: #008c6f;
+  --accent-light: #d9fdd3;
+  --accent-dark: #005c4b;
+
+  --sidebar-width: 380px;
+  --header-height: 60px;
+  --search-bar-height: 48px;
+  --bubble-max-width: 65%;
+  --border-radius-bubble: 8px;
+  --border-radius-lg: 12px;
+  --border-radius-xl: 16px;
+
+  --transition-fast: 150ms ease;
+  --transition-normal: 250ms ease;
+  --transition-slow: 400ms ease;
+}
+
+/* ─── Dark Theme ────────────────────────────────────────────────────────────── */
+[data-theme="dark"] {
+  --bg-primary: #111b21;
+  --bg-secondary: #1f2c34;
+  --bg-tertiary: #2a3942;
+  --bg-sidebar: #111b21;
+  --bg-header: #1f2c34;
+  --bg-chat: #0b141a;
+  --bg-bubble-mine: #005c4b;
+  --bg-bubble-other: #1f2c34;
+  --bg-input: #2a3942;
+  --bg-search: #1f2c34;
+  --bg-date-divider: rgba(17,27,33,0.85);
+  --bg-media-card: #2a3942;
+  --bg-system: rgba(17,27,33,0.7);
+  --bg-overlay: rgba(0,0,0,0.6);
+
+  --text-primary: #e9edef;
+  --text-secondary: #aebac1;
+  --text-muted: #8696a0;
+  --text-bubble-mine: #e9edef;
+  --text-bubble-other: #e9edef;
+  --text-system: #8696a0;
+  --text-link: #53bdeb;
+  --text-accent: #00a884;
+  --text-danger: #f15c6d;
+
+  --border-subtle: #2a3942;
+  --border-medium: #3b4a54;
+  --border-accent: #00a884;
+
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.3);
+  --shadow-md: 0 2px 8px rgba(0,0,0,0.4);
+  --shadow-lg: 0 4px 20px rgba(0,0,0,0.5);
+  --shadow-bubble: 0 1px 2px rgba(0,0,0,0.25);
+}
+
+/* ─── AMOLED Theme ──────────────────────────────────────────────────────────── */
+[data-theme="amoled"] {
+  --bg-primary: #000000;
+  --bg-secondary: #0a0a0a;
+  --bg-tertiary: #121212;
+  --bg-sidebar: #000000;
+  --bg-header: #0a0a0a;
+  --bg-chat: #000000;
+  --bg-bubble-mine: #004d3d;
+  --bg-bubble-other: #0f0f0f;
+  --bg-input: #1a1a1a;
+  --bg-search: #0a0a0a;
+  --bg-date-divider: rgba(0,0,0,0.9);
+  --bg-media-card: #1a1a1a;
+  --bg-system: rgba(0,0,0,0.8);
+  --bg-overlay: rgba(0,0,0,0.7);
+
+  --text-primary: #ffffff;
+  --text-secondary: #b0bec5;
+  --text-muted: #78909c;
+  --text-bubble-mine: #ffffff;
+  --text-bubble-other: #ffffff;
+  --text-system: #78909c;
+  --text-link: #4fc3f7;
+  --text-accent: #00e676;
+  --text-danger: #ff5252;
+
+  --border-subtle: #1a1a1a;
+  --border-medium: #2a2a2a;
+  --border-accent: #00e676;
+
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.8);
+  --shadow-md: 0 2px 8px rgba(0,0,0,0.8);
+  --shadow-lg: 0 4px 20px rgba(0,0,0,0.9);
+  --shadow-bubble: 0 1px 2px rgba(0,0,0,0.6);
+
+  --accent: #00e676;
+  --accent-hover: #00c853;
+  --accent-light: rgba(0,230,118,0.15);
+  --accent-dark: #00a854;
+}
+
+/* ─── Base Reset & Globals ──────────────────────────────────────────────────── */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body, #root {
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color var(--transition-normal), color var(--transition-normal);
+}
+
+/* ─── Scrollbar Styling ─────────────────────────────────────────────────────── */
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-medium);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+/* ─── Selection ─────────────────────────────────────────────────────────────── */
+
+::selection {
+  background: var(--accent);
+  color: white;
+}
+
+/* ─── Focus Ring ────────────────────────────────────────────────────────────── */
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* ─── Utility Classes ───────────────────────────────────────────────────────── */
+
+.glass {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.text-accent { color: var(--accent); }
+.text-danger  { color: var(--text-danger); }
+
+.bg-bubble-mine  { background-color: var(--bg-bubble-mine); }
+.bg-bubble-other { background-color: var(--bg-bubble-other); }
+
+.shadow-bubble { box-shadow: var(--shadow-bubble); }
+
+/* ─── Animations ────────────────────────────────────────────────────────────── */
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(20px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.5; }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes toastIn {
+  from { opacity: 0; transform: translateY(12px) scale(0.95); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes toastOut {
+  from { opacity: 1; transform: translateY(0) scale(1); }
+  to   { opacity: 0; transform: translateY(-8px) scale(0.95); }
+}
+
+.animate-fade-in       { animation: fadeIn 0.25s ease; }
+.animate-slide-up      { animation: slideUp 0.3s ease; }
+.animate-slide-in-right { animation: slideInRight 0.25s ease; }
+.animate-spin          { animation: spin 0.7s linear infinite; }
+.animate-pulse         { animation: pulse 1.5s ease-in-out infinite; }
+
+/* ─── Highlight (search) ────────────────────────────────────────────────────── */
+
+mark.search-highlight {
+  background: rgba(255, 214, 0, 0.55);
+  color: inherit;
+  border-radius: 2px;
+  padding: 0 1px;
+}
+
+[data-theme="dark"] mark.search-highlight,
+[data-theme="amoled"] mark.search-highlight {
+  background: rgba(255, 214, 0, 0.35);
+}
+
+/* ─── Skeleton shimmer ──────────────────────────────────────────────────────── */
+
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--bg-tertiary) 25%,
+    var(--border-subtle) 50%,
+    var(--bg-tertiary) 75%
+  );
+  background-size: 200% auto;
+  animation: shimmer 1.4s linear infinite;
+}
