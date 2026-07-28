@@ -36,3 +36,7 @@ wrangler.jsonc
 
 # Project-specific
 prompt.text
+
+.dev.vars*
+!.dev.vars.example
+!.env.example
